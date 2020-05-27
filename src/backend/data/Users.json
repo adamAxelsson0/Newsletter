@@ -1,0 +1,29 @@
+[{
+    "id": 1,
+    "username": "Pelle",
+    "password": "katt",
+    "email": "pelle@svanslos.se",
+    "newsletter": true
+},
+{
+    "id": 2,
+    "username": "bill",
+    "password": "bull",
+    "email": "bill@bull.se",
+    "newsletter": false
+},
+{
+    "id": 3,
+    "username": "ElakaMans",
+    "password": "elak",
+    "email": "elaka@mans.se",
+    "newsletter": false
+},
+{
+    "id": 4,
+    "username": "Maja",
+    "password": "maja",
+    "email": "maja@gradnos.se",
+    "newsletter": true
+},
+]
