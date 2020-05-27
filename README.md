@@ -19,6 +19,7 @@ Frontend:
 En besökare ska kunna registrerar sig som ny användare via frontend sidan.
 Användaren ska sparas i en json fil på servern. 
 En registerad användare ska kunna logga in med sina sparade uppgifter och ändra prenumerationsstatus (Ja/Nej).
+
 VG krav:
 
 Administrationsvyn i backend skall vara skyddad bakom en inloggning.
