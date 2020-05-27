@@ -13,8 +13,7 @@ I uppgiften kommer ni att få hantera läsning och presentation utav data på li
 G krav:
 
 Backend:
-Administrationsvyn ska enbart nås från backend applikationen. 
-
+Administrationsvyn ska enbart nås från backend applikationen.
 En administratör skall kunna se en lista på samtliga användare samt en sträng (kommaseparerad) på alla mailadresser för dem som valt att prenumerera på nyhetsbrev.
 Frontend:
 En besökare ska kunna registrerar sig som ny användare via frontend sidan.
