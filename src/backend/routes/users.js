@@ -15,7 +15,6 @@ router.get('/', (req, res, next) => {
     if (err) throw err;
 
     let users = JSON.parse(data);
-    console.log(users)
 
     res.send(users);
   })

@@ -45,17 +45,3 @@ function Logout() {
   localStorage.clear();
   alert("Logged out")
 }
-async function Register() {
-  try {
-    const thisForm = document.getElementById('registerForm');
-    const formData = new FormData(thisForm).entries()
-    await fetch('http://localhost:4000/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Object.fromEntries(formData))
-    });
-  } catch (error) {
-    alert(error);
-    console.log(error);
-  }
-}
