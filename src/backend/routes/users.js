@@ -3,7 +3,7 @@ const router = express.Router();
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-var cryptoJS = require('crypto-js');
+const cryptoJS = require('crypto-js');
 
 const usersDir = path.join(__dirname, '../data/Users.json')
 
@@ -14,8 +14,11 @@ router.get('/', (req, res, next) => {
 
   fs.readFile(usersDir, (err, data) => {
     if (err) throw err;
-
     let users = JSON.parse(data);
+    users.forEach(element => {
+      var bytes = cryptoJS.AES.decrypt(element.password, 'Saltkey');
+      element.password = bytes.toString(cryptoJS.enc.Utf8);
+    });
 
     res.send(users);
   })
@@ -29,10 +32,12 @@ router.get('/:id', function (req, res, next) {
 
     var user = users.find(x => x.id == req.params.id)
     if (user) {
+      var bytes = cryptoJS.AES.decrypt(user.password, 'Saltkey');
+      user.password = bytes.toString(cryptoJS.enc.Utf8);
       res.send(JSON.stringify(user, null, 2));
     }
     else {
-      res.send(400,`Could not find ID: ${req.params.id}`);
+      res.send(400, `Could not find ID: ${req.params.id}`);
     }
   });
 });
@@ -44,6 +49,9 @@ router.post('/', (req, res, next) => {
 
     var users = JSON.parse(data);
     req.body.id = users.length + 1;
+
+    //Encrypting password
+    req.body.password = cryptoJS.AES.encrypt(req.body.password, 'Saltkey').toString();
 
     users.push(req.body);
 
