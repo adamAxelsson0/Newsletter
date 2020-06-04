@@ -9,37 +9,50 @@ const usersDir = path.join(__dirname, '../data/Users.json')
 
 router.use(cors());
 
+//TODO SHOULD ONLY BE ACCESSIBLE BY ADMIN SINCE PASSWORDS GET DECRYPTED
 router.get('/', (req, res, next) => {
   console.log(usersDir)
-
-  fs.readFile(usersDir, (err, data) => {
-    if (err) throw err;
-    let users = JSON.parse(data);
-    users.forEach(element => {
-      var bytes = cryptoJS.AES.decrypt(element.password, 'Saltkey');
-      element.password = bytes.toString(cryptoJS.enc.Utf8);
-    });
-
-    res.send(users);
-  })
+  try {
+    fs.readFile(usersDir, (err, data) => {
+      if (err) throw err;
+      let users = JSON.parse(data);
+      users.forEach(element => {
+        var bytes = cryptoJS.AES.decrypt(element.password, 'Saltkey');
+        element.password = bytes.toString(cryptoJS.enc.Utf8);
+      });
+      return res.send(users);
+    })
+  } catch (error) {
+    return res.send(400, `ERROR`);
+  }
 });
 
-router.get('/:id', function (req, res, next) {
+router.post('/login', function (req, res, next) {
+  try {
+    fs.readFile("./data/Users.json", (err, data) => {
+      if (err) throw err;
+      var users = JSON.parse(data);
 
-  fs.readFile("./data/Users.json", (err, data) => {
-    if (err) throw err;
-    var users = JSON.parse(data);
+      var user = users.find(x => x.username == req.body.username)
 
-    var user = users.find(x => x.id == req.params.id)
-    if (user) {
-      var bytes = cryptoJS.AES.decrypt(user.password, 'Saltkey');
-      user.password = bytes.toString(cryptoJS.enc.Utf8);
-      res.send(JSON.stringify(user, null, 2));
-    }
-    else {
-      res.send(400, `Could not find ID: ${req.params.id}`);
-    }
-  });
+      if (user) {
+        var bytes = cryptoJS.AES.decrypt(user.password, 'Saltkey');
+        user.password = bytes.toString(cryptoJS.enc.Utf8);
+
+        if (user.password == req.body.password) {
+          res.send(JSON.stringify(user, null, 2));
+        }
+        else {
+          res.send(400, `Wrong password for: ${req.body.username}`);
+        }
+      }
+      else {
+        res.send(400, `Could not find ID: ${req.body.username}`);
+      }
+    });
+  } catch (error) {
+    throw error;
+  }
 });
 
 router.post('/', (req, res, next) => {
@@ -48,6 +61,7 @@ router.post('/', (req, res, next) => {
     if (err) throw err;
 
     var users = JSON.parse(data);
+    //TODO CHANGE THIS. Should be something else
     req.body.id = users.length + 1;
 
     //Encrypting password
@@ -58,18 +72,36 @@ router.post('/', (req, res, next) => {
     fs.writeFile("./data/Users.json", JSON.stringify(users, null, 2), (err) => {
       if (err) throw err;
     });
-    res.send(JSON.stringify(req.body, null, 2));
+    return res.send(JSON.stringify(req.body, null, 2));
   });
 });
 
-router.put('/:id', (req, res) => {
-  console.log(req.params.id)
-  return res.send(`Received a put on ID: ${req.params.id}`);
-});
+router.put('/', (req, res, next) => {
+  try {
+    fs.readFile("./data/Users.json", (err, data) => {
 
-router.delete('/api/users/:id', (req, res) => {
-  console.log(req.params.id)
-  return res.send(`Received a delete on ID: ${req.params.id}`);
+      if (err) throw err;
+      var users = JSON.parse(data);
+
+      if(!users.find(x => x.id == req.body.id)){
+        return res.send(400, `Could not find ID: ${req.body.id}`);
+      }
+      //Remove old one
+      users = users.filter(x => x.id != req.body.id);
+      //Add new one
+      users.push(req.body);
+      //Sort them by ID for eye candy.
+      users = users.sort((x, y) => parseFloat(x.id) - parseFloat(y.id));
+
+      fs.writeFile("./data/Users.json", JSON.stringify(users, null, 2), (err) => {
+        if (err) throw err;
+      });
+      return res.send(JSON.stringify(req.body, null, 2));
+    });
+
+  } catch (error) {
+    return res.send(400, `Could not find ID: ${req.body.id}`);
+  }
 });
 
 module.exports = router;

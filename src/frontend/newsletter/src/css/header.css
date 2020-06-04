@@ -1,0 +1,20 @@
+.header {
+    padding: 1px;
+    text-align: center;
+    background: #232830;
+    color: white;
+    font-size: 30px;
+  }
+.header h1{
+    padding: 0px;
+    margin: 20px 0px;
+}
+.header button{
+    border-radius: 12px;
+    font-size: 24px;
+    background-color: rgb(67, 163, 70);
+    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
