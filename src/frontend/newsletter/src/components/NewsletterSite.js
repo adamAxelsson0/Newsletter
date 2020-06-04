@@ -30,6 +30,8 @@ class NewsLetterSite extends Component {
     };
 
     render() {
+        
+        console.log(this.state.user);
         return <div>
             <Header
                 showLogin={this.LoginUser.bind(this)}

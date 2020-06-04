@@ -2,15 +2,8 @@
   {
     "id": 1,
     "username": "Pelle",
-    "password": "katt",
-    "email": "pelle@svanslos.se",
-    "newsletter": false
-  },
-  {
-    "id": 2,
-    "username": "Åsa",
-    "password": "katt",
-    "email": "pelle@svanslos.se",
-    "newsletter": true
+    "password": "U2FsdGVkX19Tee6RWI4uv3wC0G0w5bRUu4ver15eWB4=",
+    "newsletter": false,
+    "email": "pelle@svanslos.se"
   }
 ]

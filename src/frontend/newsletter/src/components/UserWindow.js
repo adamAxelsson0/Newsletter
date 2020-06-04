@@ -26,7 +26,6 @@ class UserWindow extends Component {
         this.props.subscription(this.state)
     }
     render() {
-        console.log(this.props.user);
         return <div>
             <h1>Hello {this.props.user.username}</h1>
             <h4>E-mail: {this.props.user.email}</h4>

@@ -18,15 +18,19 @@ class RegisterWindow extends Component {
     }
     async handleSubmit(event) {
         event.preventDefault();
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(this.state)
-        };
-        const response = await fetch('http://localhost:4000/api/users', requestOptions);
-        const user = await response.json();
-        if(user){
-            this.props.user = user;
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(this.state)
+            };
+            const response = await fetch('http://localhost:4000/api/users', requestOptions);
+            const user = await response.json();
+            if (user) {
+                this.props.registerUser(user);
+            }
+        } catch (error) {
+            alert("Something went banana")
         }
     }
 
@@ -53,7 +57,7 @@ class RegisterWindow extends Component {
                 <br />
                 <label>
                     Subscribe to Newsletter:
-                    <input type="checkbox" name="newsletter" value={false} id="newsletter"
+                    <input type="checkbox" name="newsletter" value={true} id="newsletter"
                         onChange={this.handleChange} />
                 </label>
                 <br />
