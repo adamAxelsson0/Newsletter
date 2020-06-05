@@ -1,3 +1,16 @@
+# How To run
+Run backend
+directory: /src/backend directory 
+command: npm run dev
+http://localhost:4000/
+Login for Admin: Username: "test", Password: "1234"
+
+Run frontend
+directory: /src/frontend/newsletter 
+command: npm start
+http://localhost:3000/
+
+
 # Newsletter
 Inlämningsuppgift - Vill du ha mitt nyhetsbrev?
 
