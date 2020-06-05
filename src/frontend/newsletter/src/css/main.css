@@ -1,0 +1,23 @@
+.main{
+    text-align: center;
+}
+.main button {
+    border-radius: 12px;
+    background-color: rgb(90, 109, 161);
+    color: white;
+    font-size: 16px;
+    margin: 8px 0px;
+}
+.main button:hover {
+    background-color: rgb(41, 60, 145); /* Green */
+    color: white;
+  }
+  .main input[type=text], input[type=password], input[type=email]{
+    padding: 12px 20px;
+    margin: 8px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+  }

@@ -61,8 +61,9 @@ router.post('/', (req, res, next) => {
     if (err) throw err;
 
     var users = JSON.parse(data);
-    //TODO CHANGE THIS. Should be something else
-    req.body.id = users.length + 1;
+    //Is always sorted in ID order, even when doing a put.
+    var lastIndexUser = users[users.length-1]
+    req.body.id = lastIndexUser.id + 1;
 
     //Encrypting password
     req.body.password = cryptoJS.AES.encrypt(req.body.password, 'Saltkey').toString();
@@ -100,7 +101,7 @@ router.put('/', (req, res, next) => {
     });
 
   } catch (error) {
-    return res.send(400, `Could not find ID: ${req.body.id}`);
+    return res.send(400, `Something went wrong`);
   }
 });
 

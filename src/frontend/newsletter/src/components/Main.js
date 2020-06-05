@@ -10,21 +10,21 @@ class Main extends Component {
     };
     render() {
         if (this.props.showLoginForm) {
-            return <div className="loginwindow">
+            return <div className="main">
                 <LoginWindow
                     loginUser={this.SetUser.bind(this)}
                 />
             </div>
         }
         else if (this.props.showRegisterForm) {
-            return <div >
+            return <div className="main">
                 <RegisterWindow
                     registerUser={this.SetUser.bind(this)}
                 />
             </div>
         }
         else if (this.props.user) {
-            return <div>
+            return <div className="main">
                 <UserWindow
                 user={this.props.user}
                 subscription={this.SetUser.bind(this)}

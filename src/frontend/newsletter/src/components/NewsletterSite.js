@@ -8,7 +8,11 @@ class NewsLetterSite extends Component {
         this.state = {
             showLoginForm: false,
             showRegisterForm: false,
-            user: undefined
+            user: undefined,
+            showLoggedInButtons: false
+        }
+        if (this.state.user) {
+            
         }
     }
     RegisterUser = (register) => {
@@ -25,17 +29,18 @@ class NewsLetterSite extends Component {
         this.setState({
             user: user,
             showLoginForm: false,
-            showRegisterForm: false
+            showRegisterForm: false,
+            showLoggedInButtons: true
         });
     };
 
     render() {
-        
-        console.log(this.state.user);
         return <div>
             <Header
-                showLogin={this.LoginUser.bind(this)}
-                showRegister={this.RegisterUser.bind(this)}
+                showLoginForm={this.LoginUser.bind(this)}
+                showRegisterForm={this.RegisterUser.bind(this)}
+                user={this.state.user}
+                setUser={this.SetUser.bind(this)}
             />
             <Main
                 showRegisterForm={this.state.showRegisterForm}
