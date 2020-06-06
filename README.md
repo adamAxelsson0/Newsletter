@@ -1,6 +1,6 @@
 # How To run
 Run backend
-directory: /src/backend directory 
+directory: /src/backend
 command: npm run dev
 http://localhost:4000/
 Login for Admin: Username: "test", Password: "1234"
