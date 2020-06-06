@@ -1,30 +1,23 @@
 [
   {
     "id": 1,
-    "username": "Pelle",
-    "password": "U2FsdGVkX19Tee6RWI4uv3wC0G0w5bRUu4ver15eWB4=",
-    "newsletter": false,
-    "email": "pelle@svanslos.se"
+    "username": "s",
+    "password": "U2FsdGVkX1+S/M7QpXSxDMSyH7sOWiQL/bXsqgNPu5k=",
+    "email": "adam.axelsson1992@gmail.com",
+    "newsletter": false
   },
   {
     "id": 2,
     "username": "Pelle",
-    "password": "U2FsdGVkX18KffxPVxRNBhxB/zBd2qfh/GJDodx2voo=",
-    "newsletter": false,
-    "email": "adam.axelsson1992@gmail.com"
-  },
-  {
-    "id": 3,
-    "username": "Adam",
-    "password": "U2FsdGVkX19/CaM9tzJqWUxQogqGLzucQWQkRftxAa8=",
-    "email": "adam.axelsson1992@gmail.com",
+    "password": "U2FsdGVkX18Q3w/IJh3YGu5bXXSUTph5W+lp4VVSDjg=",
+    "email": "pelle@svanslos.se",
     "newsletter": true
   },
   {
-    "id": 4,
-    "username": "s",
-    "password": "U2FsdGVkX1/9EmmzokUYvXqyORPe6g5TdzY6/24YDK4=",
-    "newsletter": false,
-    "email": "adam.axelsson1992@gmail.com"
+    "id": 3,
+    "username": "Pelle2",
+    "password": "U2FsdGVkX19klPEKxpuiC4XAbBHybBzg5WX6y06pMq8=",
+    "email": "adam.axelsson1992@gmail.com",
+    "newsletter": true
   }
 ]

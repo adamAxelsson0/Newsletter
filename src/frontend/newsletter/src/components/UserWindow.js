@@ -13,17 +13,15 @@ class UserWindow extends Component {
         this.ChangeSubscribtion = this.ChangeSubscribtion.bind(this);
     }
     async ChangeSubscribtion() {
-        this.setState({
-            newsletter: !this.state.newsletter
-        });
+
+        this.state.newsletter = !this.state.newsletter
+        this.props.subscription(this.state);
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
         };
         await fetch('http://localhost:4000/api/users/', requestOptions);
-
-        this.props.subscription(this.state)
     }
     render() {
         return <div>

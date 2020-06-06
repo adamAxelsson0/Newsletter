@@ -9,18 +9,12 @@ const usersDir = path.join(__dirname, '../data/Users.json')
 
 router.use(cors());
 
-//TODO SHOULD ONLY BE ACCESSIBLE BY ADMIN SINCE PASSWORDS GET DECRYPTED
 router.get('/', (req, res, next) => {
   console.log(usersDir)
   try {
     fs.readFile(usersDir, (err, data) => {
       if (err) throw err;
-      let users = JSON.parse(data);
-      users.forEach(element => {
-        var bytes = cryptoJS.AES.decrypt(element.password, 'Saltkey');
-        element.password = bytes.toString(cryptoJS.enc.Utf8);
-      });
-      return res.send(users);
+      return res.send(JSON.parse(data));
     })
   } catch (error) {
     return res.send(400, `ERROR`);
@@ -37,9 +31,9 @@ router.post('/login', function (req, res, next) {
 
       if (user) {
         var bytes = cryptoJS.AES.decrypt(user.password, 'Saltkey');
-        user.password = bytes.toString(cryptoJS.enc.Utf8);
+        decryptedPassword = bytes.toString(cryptoJS.enc.Utf8);
 
-        if (user.password == req.body.password) {
+        if (decryptedPassword == req.body.password) {
           res.send(JSON.stringify(user, null, 2));
         }
         else {

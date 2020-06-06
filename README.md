@@ -40,7 +40,7 @@ Det skall finnas en hårdkodad administratör med användarnamn "test" samt lös
 Användarens (frontend) lösenord ska krypteras (på backend) innan det sparas.
 Lämna en skriftlig reflektion utav uppgiften (Max 4 A4-sidor)
 Lämna in uppgiften via github med ett repo med två mappar "frontend" samt "backend".
-Länken samt reflektionen (om ni siktar på VG kraven) lämnas in via Ping Pong senast fredag 5 juni kl 2300. 
+Länken samt reflektionen (om ni siktar på VG kraven) lämnas in via Ping Pong senast söndag 7 juni kl 2300. 
 Reflektion får lämnas in som en del utav repot i readme.md! Notera då detta när ni lämnar in.
 
  

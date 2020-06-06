@@ -55,12 +55,6 @@ class RegisterWindow extends Component {
                         placeholder="E-mail..." onChange={this.handleChange} />
                 </label>
                 <br />
-                <label>
-                    Subscribe to Newsletter:
-                    <input type="checkbox" name="newsletter" value={true} id="newsletter"
-                        onChange={this.handleChange} />
-                </label>
-                <br />
                 <button type="submit">Submit</button>
             </form>
         );
